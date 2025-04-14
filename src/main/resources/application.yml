@@ -1,0 +1,52 @@
+spring:
+  thymeleaf:
+    enabled: false
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: service-app-client
+            client-secret: AhJxZg0vRsS5mRPRAbqrBKPnaXM6ksCY
+            authorization-grant-type: authorization_code
+            scope: openid,profile,email
+            redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8082/realms/serviceapp
+            user-name-attribute: preferred_username
+
+
+#vaadin:
+#  push:
+#    mode: AUTOMATIC
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: Nika1210
+  jpa:
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: maximkisten@gmail.com
+    password: noorlrafevvvmgud
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+scheduling:
+  enabled: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.keycloak: DEBUG
+vaadin:
+  url-mapping: /*
+  push:
+    mode: disabled
